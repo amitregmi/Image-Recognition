@@ -15,8 +15,9 @@ def writeDataToFile(filePath, data):
 
 # deserialize
 def loadDataFromFile(filePath):
-    file = open(filePath, 'rb')
-    data = pickle.load(file)
+    """Load a pickled object from ``filePath`` and close the file handle."""
+    with open(filePath, 'rb') as file:
+        data = pickle.load(file)
     return data
 
 # read a folder of images and return their features

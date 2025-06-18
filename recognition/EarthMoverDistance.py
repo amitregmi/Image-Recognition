@@ -35,9 +35,8 @@ def C_EMD(feature1, feature2, excutablePath):
     sub.call(excutablePath+"/EarthMoverDistance")
 
     # Read in EMD distance
-    file = open(excutablePath+"/result", "r").readlines()
-
-    groundDistanceFile.close()
+    with open(excutablePath+"/result", "r") as result_file:
+        lines = result_file.readlines()
 
     while True:
         try:
@@ -48,5 +47,5 @@ def C_EMD(feature1, feature2, excutablePath):
             time.sleep(1)
             print "groundDistance is not deleted properly!"
 
-    alignedDis = float(file[0])
+    alignedDis = float(lines[0])
     return unalignedDis, alignedDis
